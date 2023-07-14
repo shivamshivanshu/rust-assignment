@@ -16,12 +16,14 @@ pub struct RollingOhlc {
 impl RollingOhlc {
     pub fn new(window: u64) -> Self {
         RollingOhlc {
-            window: window,
+            window,
             prices: VecDeque::new(),
         }
     }
+
     pub fn update(&mut self, timestamp: u64, price: f64) -> Option<Ohlc> {
         self.prices.push_back((timestamp, price));
+
         while let Some((ts, _)) = self.prices.front() {
             if timestamp - ts > self.window {
                 self.prices.pop_front();
@@ -29,11 +31,12 @@ impl RollingOhlc {
                 break;
             }
         }
+
         if let Some((_, open)) = self.prices.front() {
             let close = price;
-            let high = self.prices.iter().map(|(_, p)| *p).fold(f64::MIN, f64::max);
-            let low = self.prices.iter().map(|(_, p)| *p).fold(f64::MAX, f64::min);
-            Some(Ohlc{open : *open, high, low, close})
+            let high = self.prices.iter().map(|(_, p)| *p).fold(f64::NEG_INFINITY, f64::max);
+            let low = self.prices.iter().map(|(_, p)| *p).fold(f64::INFINITY, f64::min);
+            Some(Ohlc { open: *open, high, low, close })
         } else {
             None
         }
