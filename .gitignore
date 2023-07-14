@@ -1,5 +1,4 @@
 .vscode
 tensorfox/target/
 tensorfox/rolling_ohlc/target/
-README.txt
 data

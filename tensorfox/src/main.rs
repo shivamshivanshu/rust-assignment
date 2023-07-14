@@ -72,10 +72,20 @@ fn write_ohlc_data_to_file(ohlc_values: Vec<OhlcData>, file_path: &str) -> Resul
 }
 
 fn main() {
-    let window: u64 = 300;
-    let input_file_path = "../data/dataset-a.txt";
-    let output_file_path = "../data/output.txt";
-
+    let args: Vec<String> = std::env::args().collect();
+    if args.len() != 4 {
+        println!("Usage: cargo run <input_file> <output_file> <window_size>");
+        return;
+    }
+    let input_file_path = &args[1];
+    let output_file_path = &args[2];
+    let window: u64 = match args[3].parse() {
+        Ok(size) => size,
+        Err(_) => {
+            println!("Invalid window size. Please provide a valid positive integer.");
+            return;
+        }
+    };
     match read_price_data_from_file(input_file_path) {
         Ok(prices) => {
             let ohlc_values = process_price_data(prices, window);

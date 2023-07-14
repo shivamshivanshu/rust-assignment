@@ -1,0 +1,8 @@
+Contains solutions for TensorFox Rust Assignment
+Author : Shivam Shivanshu
+Email : shivamshivanshu15@gmail.com
+
+Instructions:
+Inside the 'tensorfox' folder:
+    Build:  cargo build  
+    Run:    cargo run <input_file_path> <output_file_path> <window_size>
