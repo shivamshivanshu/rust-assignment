@@ -4,9 +4,8 @@ Author: Shivam Shivanshu
 Email: shivamshivanshu15@gmail.com
 
 ## Solution Structure
-tensorfox
-  rolling_ohlc -> Library containing APIs for calculating OHLC values
-  src/main.rs -> Binary to read Json from input_file.txt and output to output_file.txt
+### tensorfox/rolling_ohlc -> Library containing APIs for calculating OHLC values
+### tensorfox/src/main.rs -> Binary to read Json from input_file.txt and output to output_file.txt
 
 ## Building and Execution
 ### Change to tensorfox folder
