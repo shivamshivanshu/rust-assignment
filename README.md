@@ -1,5 +1,7 @@
 # rust-assignment
-Rust Assignment
+Rust Assignment solution for Tensorfox Quant Dev role
+Author: Shivam Shivanshu
+Email: shivamshivanshu15@gmail.com
 
 ## Solution Structure
 tensorfox
